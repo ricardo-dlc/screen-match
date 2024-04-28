@@ -8,9 +8,13 @@ public class Main {
         movie.setName("Toy Story");
         movie.setReleaseYear(1995);
         movie.setDuration(120);
-        // movie.info();
+        movie.setIncluded(true);
+
+        movie.info();
+
         movie.rate(10);
         movie.rate(10);
+
         System.out.println(movie);
         System.out.println(movie.getTotalRates());
         System.out.println(movie.getScore());
