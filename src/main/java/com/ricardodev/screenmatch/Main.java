@@ -1,6 +1,8 @@
 package com.ricardodev.screenmatch;
 
+import com.ricardodev.screenmatch.calculations.Recommendation;
 import com.ricardodev.screenmatch.calculations.TimeCalculator;
+import com.ricardodev.screenmatch.models.Episode;
 import com.ricardodev.screenmatch.models.Movie;
 import com.ricardodev.screenmatch.models.Serie;
 
@@ -33,5 +35,16 @@ public class Main {
         list.add(movie);
         list.add(spongeBob);
         System.out.println(list.getTotalTime());
+
+        Recommendation recommendation = new Recommendation();
+        recommendation.filter(movie);
+
+        Episode episode = new Episode();
+        episode.setNumber(1);
+        episode.setName("Episode Name");
+        episode.setSerie(spongeBob);
+        episode.setTotalViews(500);
+
+        recommendation.filter(episode);
     }
 }
