@@ -29,4 +29,9 @@ public class Serie extends Title {
     public void setDurationByEpisode(int durationByEpisode) {
         this.durationByEpisode = durationByEpisode;
     }
+
+    @Override
+    public int getDuration() {
+        return durationByEpisode * episodesBySeason * seasons;
+    }
 }

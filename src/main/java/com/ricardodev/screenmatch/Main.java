@@ -1,6 +1,7 @@
 package com.ricardodev.screenmatch;
 
 import com.ricardodev.screenmatch.models.Movie;
+import com.ricardodev.screenmatch.models.Serie;
 
 public class Main {
     public static void main(String[] args) {
@@ -18,5 +19,15 @@ public class Main {
         System.out.println(movie);
         System.out.println(movie.getTotalRates());
         System.out.println(movie.getScore());
+
+        Serie spongeBob = new Serie();
+        spongeBob.setName("SpongeBob");
+        spongeBob.setReleaseYear(1999);
+        spongeBob.setIncluded(true);
+        spongeBob.setSeasons(14);
+        spongeBob.setDurationByEpisode(25);
+        spongeBob.setEpisodesBySeason(20);
+
+        spongeBob.info();
     }
 }

@@ -48,13 +48,13 @@ public class Title {
         return """
                 The movie is: %s
                 Release year: %s
-                Duration: %dmins""".formatted(this.name, this.releaseYear, this.duration);
+                Duration: %dmins""".formatted(this.name, this.releaseYear, this.getDuration());
     }
 
     public void info() {
         System.out.println("The movie is: " + this.name);
         System.out.println("Release year: " + this.releaseYear);
-        System.out.println("Duration: " + this.duration);
+        System.out.println("Duration: " + this.getDuration());
     }
 
     public void rate(double score) {
