@@ -54,7 +54,7 @@ public class Title {
     public void info() {
         System.out.println("The movie is: " + this.name);
         System.out.println("Release year: " + this.releaseYear);
-        System.out.println("Duration: " + this.getDuration());
+        System.out.println("Duration: " + this.getDuration() + " mins");
     }
 
     public void rate(double score) {

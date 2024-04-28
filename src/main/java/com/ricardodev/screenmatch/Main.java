@@ -1,5 +1,6 @@
 package com.ricardodev.screenmatch;
 
+import com.ricardodev.screenmatch.calculations.TimeCalculator;
 import com.ricardodev.screenmatch.models.Movie;
 import com.ricardodev.screenmatch.models.Serie;
 
@@ -16,7 +17,6 @@ public class Main {
         movie.rate(10);
         movie.rate(10);
 
-        System.out.println(movie);
         System.out.println(movie.getTotalRates());
         System.out.println(movie.getScore());
 
@@ -27,7 +27,11 @@ public class Main {
         spongeBob.setSeasons(14);
         spongeBob.setDurationByEpisode(25);
         spongeBob.setEpisodesBySeason(20);
-
         spongeBob.info();
+
+        TimeCalculator list = new TimeCalculator();
+        list.add(movie);
+        list.add(spongeBob);
+        System.out.println(list.getTotalTime());
     }
 }
