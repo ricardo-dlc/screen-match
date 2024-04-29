@@ -1,5 +1,7 @@
 package com.ricardodev.screenmatch;
 
+import java.util.ArrayList;
+
 import com.ricardodev.screenmatch.calculations.Recommendation;
 import com.ricardodev.screenmatch.calculations.TimeCalculator;
 import com.ricardodev.screenmatch.models.Episode;
@@ -46,5 +48,19 @@ public class Main {
         episode.setTotalViews(500);
 
         recommendation.filter(episode);
+
+        var newMovie = new Movie();
+        newMovie.setName("El señor de los anillos");
+        newMovie.setDuration(180);
+        newMovie.setReleaseYear(2001);
+
+        ArrayList<Movie> movieList = new ArrayList<>();
+        movieList.add(newMovie);
+        movieList.add(movie);
+
+        System.out.println("List size: " + movieList.size());
+        System.out.println("First movie is: " + movieList.get(0).getName());
+
+        System.out.println(movieList);
     }
 }
