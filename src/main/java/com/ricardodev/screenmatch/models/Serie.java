@@ -1,14 +1,13 @@
 package com.ricardodev.screenmatch.models;
 
 public class Serie extends Title {
-
-    public Serie(String name) {
-        super(name);
-    }
-
     private int seasons;
     private int episodesBySeason;
     private int durationByEpisode;
+
+    public Serie(String name, int releaseYear) {
+        super(name, releaseYear);
+    }
 
     public int getSeasons() {
         return seasons;

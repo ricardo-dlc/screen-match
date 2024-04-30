@@ -3,11 +3,11 @@ package com.ricardodev.screenmatch.models;
 import com.ricardodev.screenmatch.calculations.Classification;
 
 public class Movie extends Title implements Classification {
-    public Movie(String name) {
-        super(name);
-    }
-
     private String director;
+
+    public Movie(String name, int releaseYear) {
+        super(name, releaseYear);
+    }
 
     public String getDirector() {
         return director;

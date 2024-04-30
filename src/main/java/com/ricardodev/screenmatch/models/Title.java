@@ -8,8 +8,9 @@ public class Title {
     private double totalScore;
     private int totalRates;
 
-    public Title(String name) {
+    public Title(String name, int releaseYear) {
         this.name = name;
+        this.releaseYear = releaseYear;
     }
 
     public String getName() {
@@ -20,24 +21,16 @@ public class Title {
         return included;
     }
 
+    public void setIncluded(boolean included) {
+        this.included = included;
+    }
+
     public int getReleaseYear() {
         return releaseYear;
     }
 
     public int getDuration() {
         return duration;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setIncluded(boolean included) {
-        this.included = included;
-    }
-
-    public void setReleaseYear(int releaseYear) {
-        this.releaseYear = releaseYear;
     }
 
     public void setDuration(int duration) {
