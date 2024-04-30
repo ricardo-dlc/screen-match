@@ -8,6 +8,10 @@ public class Title {
     private double totalScore;
     private int totalRates;
 
+    public Title(String name) {
+        this.name = name;
+    }
+
     public String getName() {
         return name;
     }

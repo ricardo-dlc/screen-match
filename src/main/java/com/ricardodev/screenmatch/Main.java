@@ -10,8 +10,8 @@ import com.ricardodev.screenmatch.models.Serie;
 
 public class Main {
     public static void main(String[] args) {
-        Movie movie = new Movie();
-        movie.setName("Toy Story");
+        Movie movie = new Movie("Toy Story");
+        // movie.setName("Toy Story");
         movie.setReleaseYear(1995);
         movie.setDuration(120);
         movie.setIncluded(true);
@@ -24,8 +24,8 @@ public class Main {
         System.out.println(movie.getTotalRates());
         System.out.println(movie.getScore());
 
-        Serie spongeBob = new Serie();
-        spongeBob.setName("SpongeBob");
+        Serie spongeBob = new Serie("SpongeBob");
+        // spongeBob.setName("SpongeBob");
         spongeBob.setReleaseYear(1999);
         spongeBob.setIncluded(true);
         spongeBob.setSeasons(14);
@@ -49,8 +49,8 @@ public class Main {
 
         recommendation.filter(episode);
 
-        var newMovie = new Movie();
-        newMovie.setName("El señor de los anillos");
+        var newMovie = new Movie("El señor de los anillos");
+        // newMovie.setName("El señor de los anillos");
         newMovie.setDuration(180);
         newMovie.setReleaseYear(2001);
 
