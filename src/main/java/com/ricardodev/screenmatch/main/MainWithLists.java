@@ -2,6 +2,8 @@ package com.ricardodev.screenmatch.main;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 import com.ricardodev.screenmatch.models.Movie;
 import com.ricardodev.screenmatch.models.Serie;
@@ -31,7 +33,7 @@ public class MainWithLists {
             }
         }
 
-        ArrayList<String> nameList = new ArrayList<>();
+        List<String> nameList = new ArrayList<>();
         nameList.add("Juan Sánchez");
         nameList.add("Mario Galindo");
         nameList.add("Berenice Rocha");
@@ -41,6 +43,9 @@ public class MainWithLists {
         System.out.println("Ordered list" + nameList);
 
         Collections.sort(list);
+        System.out.println(list);
+
+        list.sort(Comparator.comparing(Title::getReleaseYear));
         System.out.println(list);
     }
 }
