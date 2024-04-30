@@ -1,6 +1,6 @@
 package com.ricardodev.screenmatch.models;
 
-public class Title {
+public class Title implements Comparable<Title> {
     private String name;
     private boolean included;
     private int releaseYear;
@@ -44,12 +44,11 @@ public class Title {
     @Override
     public String toString() {
         return """
-                Movie: %s (%s) %dmins
-                """.formatted(this.name, this.releaseYear, this.getDuration());
+                Title: %s (%s) %dmins""".formatted(this.name, this.releaseYear, this.getDuration());
     }
 
     public void info() {
-        System.out.println("Movie: %s (%s) %d mins".formatted(this.name, this.releaseYear, this.getDuration()));
+        System.out.println("Title: %s (%s) %d mins".formatted(this.name, this.releaseYear, this.getDuration()));
     }
 
     public void rate(double score) {
@@ -59,5 +58,10 @@ public class Title {
 
     public double getScore() {
         return totalScore / totalRates;
+    }
+
+    @Override
+    public int compareTo(Title otherTitle) {
+        return this.getName().compareTo(otherTitle.getName());
     }
 }

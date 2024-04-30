@@ -1,4 +1,4 @@
-package com.ricardodev.screenmatch;
+package com.ricardodev.screenmatch.main;
 
 import java.util.ArrayList;
 
