@@ -1,12 +1,9 @@
 package com.ricardodev.screenmatch.models;
 
-import com.google.gson.annotations.SerializedName;
 import com.ricardodev.screenmatch.errors.CannotConvertDurationExeption;
 
 public class Title implements Comparable<Title> {
-    @SerializedName("Title")
     private String name;
-    @SerializedName("Year")
     private int releaseYear;
     private boolean included;
     private int duration;
