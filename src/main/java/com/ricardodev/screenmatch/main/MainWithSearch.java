@@ -18,29 +18,39 @@ import io.github.cdimascio.dotenv.Dotenv;
 
 public class MainWithSearch {
     public static void main(String[] args) throws IOException, InterruptedException {
-        Dotenv dotenv = Dotenv.load();
-        String API_KEY = dotenv.get("API_KEY");
-        Scanner scanner = new Scanner(System.in);
+        try {
+            Dotenv dotenv = Dotenv.load();
+            String API_KEY = dotenv.get("API_KEY");
+            Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Enter a movie name");
-        String input = scanner.nextLine();
-        URI uri = URI.create("http://www.omdbapi.com/?apikey=%s&t=%s".formatted(API_KEY, input));
+            System.out.println("Enter a movie name");
+            String input = scanner.nextLine();
+            URI uri = URI.create("http://www.omdbapi.com/?apikey=%s&t=%s".formatted(API_KEY, input));
 
-        HttpClient client = HttpClient.newHttpClient();
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(uri)
-                .build();
-        HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
-        String json = response.body();
+            HttpClient client = HttpClient.newHttpClient();
+            HttpRequest request = HttpRequest.newBuilder()
+                    .uri(uri)
+                    .build();
+            HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
+            String json = response.body();
 
-        Gson gson = new GsonBuilder()
-                .setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE)
-                .create();
-        TitleOmdb titleOmdb = gson.fromJson(json, TitleOmdb.class);
-        System.out.println(titleOmdb.year().split(" ")[0]);
-        Title title = new Title(titleOmdb);
-        System.out.println(title);
+            Gson gson = new GsonBuilder()
+                    .setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE)
+                    .create();
+            TitleOmdb titleOmdb = gson.fromJson(json, TitleOmdb.class);
 
-        scanner.close();
+            Title title = new Title(titleOmdb);
+            System.out.println(title);
+
+            scanner.close();
+        } catch (NumberFormatException e) {
+            System.out.println("An error ocurred.");
+            System.out.println(e.getMessage());
+        } catch (IllegalArgumentException e) {
+            System.out.println("Verify your input.");
+        } catch (Exception e) {
+            System.out.println("Unexpected erro");
+        }
+
     }
 }
