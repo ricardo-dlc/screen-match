@@ -1,9 +1,13 @@
 package com.ricardodev.screenmatch.models;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Title implements Comparable<Title> {
+    @SerializedName("Title")
     private String name;
-    private boolean included;
+    @SerializedName("Year")
     private int releaseYear;
+    private boolean included;
     private int duration;
     private double totalScore;
     private int totalRates;
@@ -11,6 +15,12 @@ public class Title implements Comparable<Title> {
     public Title(String name, int releaseYear) {
         this.name = name;
         this.releaseYear = releaseYear;
+    }
+
+    public Title(TitleOmdb titleOmdb) {
+        this.name = titleOmdb.title();
+        this.releaseYear = Integer.valueOf(titleOmdb.year());
+        this.duration = Integer.valueOf(titleOmdb.runtime().split(" ")[0]);
     }
 
     public String getName() {
@@ -44,11 +54,11 @@ public class Title implements Comparable<Title> {
     @Override
     public String toString() {
         return """
-                Title: %s (%s) %dmins""".formatted(this.name, this.releaseYear, this.getDuration());
+                Title: %s (%s) %d min""".formatted(this.name, this.releaseYear, this.getDuration());
     }
 
     public void info() {
-        System.out.println("Title: %s (%s) %d mins".formatted(this.name, this.releaseYear, this.getDuration()));
+        System.out.println("Title: %s (%s) %d min".formatted(this.name, this.releaseYear, this.getDuration()));
     }
 
     public void rate(double score) {
