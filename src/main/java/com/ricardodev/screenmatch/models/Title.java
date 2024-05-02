@@ -1,6 +1,7 @@
 package com.ricardodev.screenmatch.models;
 
 import com.google.gson.annotations.SerializedName;
+import com.ricardodev.screenmatch.errors.CannotConvertDurationExeption;
 
 public class Title implements Comparable<Title> {
     @SerializedName("Title")
@@ -20,6 +21,9 @@ public class Title implements Comparable<Title> {
     public Title(TitleOmdb titleOmdb) {
         this.name = titleOmdb.title();
         this.releaseYear = Integer.valueOf(titleOmdb.year());
+        if (titleOmdb.runtime().contains("N/A")) {
+            throw new CannotConvertDurationExeption("Cannot convert the duration time.");
+        }
         this.duration = Integer.valueOf(titleOmdb.runtime().split(" ")[0]);
     }
 

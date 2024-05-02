@@ -2,6 +2,7 @@ package com.ricardodev.screenmatch.main;
 
 import java.io.IOException;
 import java.net.URI;
+import java.net.URLEncoder;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
@@ -11,6 +12,7 @@ import java.util.Scanner;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.ricardodev.screenmatch.errors.CannotConvertDurationExeption;
 import com.ricardodev.screenmatch.models.Title;
 import com.ricardodev.screenmatch.models.TitleOmdb;
 
@@ -25,7 +27,8 @@ public class MainWithSearch {
 
             System.out.println("Enter a movie name");
             String input = scanner.nextLine();
-            URI uri = URI.create("http://www.omdbapi.com/?apikey=%s&t=%s".formatted(API_KEY, input));
+            String encodedInput = URLEncoder.encode(input, "UTF-8");
+            URI uri = URI.create("http://www.omdbapi.com/?apikey=%s&t=%s".formatted(API_KEY, encodedInput));
 
             HttpClient client = HttpClient.newHttpClient();
             HttpRequest request = HttpRequest.newBuilder()
@@ -48,8 +51,8 @@ public class MainWithSearch {
             System.out.println(e.getMessage());
         } catch (IllegalArgumentException e) {
             System.out.println("Verify your input.");
-        } catch (Exception e) {
-            System.out.println("Unexpected erro");
+        } catch (CannotConvertDurationExeption e) {
+            System.out.println(e.getMessage());
         }
 
     }
